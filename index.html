@@ -1,75 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Main Calculator Form Container -->
-  <main class="calculator-wrapper">
-    <form name="calcForm" id="calcForm" autocomplete="off" onsubmit="return false;">
-      
-      <!-- Display Screen (Form Input Elements) -->
-      <div class="display-container">
-        <input 
-          type="text" 
-          name="history" 
-          id="historyDisplay" 
-          class="sub-display" 
-          value="" 
-          readonly 
-          tabindex="-1"
-          aria-label="Operation History"
-        />
-        <input 
-          type="text" 
-          name="display" 
-          id="calcDisplay" 
-          class="main-display" 
-          value="0" 
-          readonly 
-          tabindex="-1"
-          aria-label="Calculator Display"
-        />
+  <div class="calculator-card">
+    <h2>Basic Calculator</h2>
+
+    <form id="calcForm">
+      <!-- First Number Input -->
+      <div class="form-group">
+        <label for="num1">First Number:</label>
+        <input type="number" id="num1" step="any" placeholder="Enter first number" required>
       </div>
 
-      <!-- Keypad Grid (Input Buttons) -->
-      <div class="keypad-grid">
-        <!-- Row 1: Function / Utility Keys -->
-        <input type="button" class="btn btn-func" id="clearBtn" value="AC" />
-        <input type="button" class="btn btn-func" id="plusMinusBtn" value="±" />
-        <input type="button" class="btn btn-func" id="percentBtn" value="%" />
-        <input type="button" class="btn btn-op" data-op="÷" value="÷" />
-
-        <!-- Row 2: Numbers & Multiplication -->
-        <input type="button" class="btn btn-num" value="7" />
-        <input type="button" class="btn btn-num" value="8" />
-        <input type="button" class="btn btn-num" value="9" />
-        <input type="button" class="btn btn-op" data-op="×" value="×" />
-
-        <!-- Row 3: Numbers & Subtraction -->
-        <input type="button" class="btn btn-num" value="4" />
-        <input type="button" class="btn btn-num" value="5" />
-        <input type="button" class="btn btn-num" value="6" />
-        <input type="button" class="btn btn-op" data-op="−" value="−" />
-
-        <!-- Row 4: Numbers & Addition -->
-        <input type="button" class="btn btn-num" value="1" />
-        <input type="button" class="btn btn-num" value="2" />
-        <input type="button" class="btn btn-num" value="3" />
-        <input type="button" class="btn btn-op" data-op="+" value="+" />
-
-        <!-- Row 5: Zero, Decimal, & Equals -->
-        <input type="button" class="btn btn-num btn-zero" value="0" />
-        <input type="button" class="btn btn-num" value="." />
-        <input type="button" class="btn btn-op" id="equalsBtn" value="=" />
+      <!-- Operation Selector Dropdown -->
+      <div class="form-group">
+        <label for="operation">Select Operation:</label>
+        <select id="operation">
+          <option value="add">Addition (+)</option>
+          <option value="subtract">Subtraction (−)</option>
+          <option value="multiply">Multiplication (×)</option>
+          <option value="divide">Division (÷)</option>
+        </select>
       </div>
 
+      <!-- Second Number Input -->
+      <div class="form-group">
+        <label for="num2">Second Number:</label>
+        <input type="number" id="num2" step="any" placeholder="Enter second number" required>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="button" id="calcBtn" onclick="calculate()">Calculate</button>
+        <button type="reset" id="resetBtn" onclick="clearResult()">Reset</button>
+      </div>
     </form>
-  </main>
+
+    <!-- Result Display -->
+    <div class="result-box">
+      <h3>Result:</h3>
+      <p id="output">Enter numbers and click Calculate</p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
